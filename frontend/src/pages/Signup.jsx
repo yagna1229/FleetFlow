@@ -27,8 +27,8 @@ export default function Signup() {
         role: selectedRole,
       })
 
-      toast.success('Account created')
-      navigate('/dashboard', { replace: true })
+      toast.success('Account created. Please verify your email.')
+      navigate(`/verify-email?email=${encodeURIComponent(form.email)}`, { replace: true })
     } catch (err) {
       toast.error(err.message || 'Signup failed')
       setUi({ loading: false })

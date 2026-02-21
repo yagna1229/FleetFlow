@@ -26,10 +26,16 @@ export default function Login() {
     setUi({ loading: true })
 
     try {
-      await apiPost('/auth/login', {
+      const res = await apiPost('/auth/login', {
         email: form.email,
         password: form.password,
       })
+
+      if (res.is_verified === false) {
+        toast.warning(res.message || 'Please verify your email')
+        navigate(`/verify-email?email=${encodeURIComponent(form.email)}`)
+        return
+      }
 
       toast.success('Logged in successfully')
       navigate(redirectTo, { replace: true })
@@ -80,7 +86,10 @@ export default function Login() {
           </label>
 
           <label className="field">
-            <span>Password</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span>Password</span>
+              <Link to="/forgot-password" style={{ fontSize: '0.875rem', color: 'var(--primary)', textDecoration: 'none' }}>Forgot Password?</Link>
+            </div>
             <input
               type="password"
               autoComplete="current-password"

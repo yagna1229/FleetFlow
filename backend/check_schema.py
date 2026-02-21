@@ -1,6 +1,6 @@
 import asyncio
 from sqlalchemy import text
-from app.core.database import engine
+ from app.core.database import engine
 
 async def check():
     async with engine.begin() as conn:
@@ -19,3 +19,4 @@ async def check():
         print("All tables:", tables)
 
 asyncio.run(check())
+

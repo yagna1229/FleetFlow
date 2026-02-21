@@ -8,6 +8,8 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Unauthorized from './pages/Unauthorized'
 import Dashboard from './pages/Dashboard'
+import VerifyEmail from './pages/VerifyEmail'
+import ForgotPassword from './pages/ForgotPassword'
 import { ROUTES } from './constants/routes'
 
 /* ── Vehicle pages ── */
@@ -38,6 +40,8 @@ function App() {
         <Route index element={<Navigate to={ROUTES.LOGIN} replace />} />
         <Route path={ROUTES.LOGIN} element={<Login />} />
         <Route path={ROUTES.SIGNUP} element={<Signup />} />
+        <Route path={ROUTES.VERIFY_EMAIL} element={<VerifyEmail />} />
+        <Route path={ROUTES.FORGOT_PASSWORD} element={<ForgotPassword />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
 
         {/* ── Protected routes (role-based via ProtectedRoute + canAccess) ── */}

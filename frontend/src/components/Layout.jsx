@@ -14,7 +14,8 @@ export default function Layout() {
   const isAuthPage =
     location.pathname.startsWith('/login') ||
     location.pathname.startsWith('/signup') ||
-    location.pathname.startsWith('/forgot-password')
+    location.pathname.startsWith('/forgot-password') ||
+    location.pathname.startsWith('/verify-email')
 
   const handleLogout = async () => {
     await dispatch(logoutUser())
