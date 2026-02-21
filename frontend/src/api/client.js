@@ -44,10 +44,32 @@ export function apiGet(path) {
 export function apiPost(path, body) {
   return request(path, {
     method: 'POST',
+    body: body ? JSON.stringify(body) : undefined,
+  })
+}
+
+export function apiPatch(path, body) {
+  return request(path, {
+    method: 'PATCH',
     body: JSON.stringify(body),
   })
 }
 
-export function openGoogleLogin() {
-  window.location.href = '/auth/google/login'
+export function apiPut(path, body) {
+  return request(path, {
+    method: 'PUT',
+    body: JSON.stringify(body),
+  })
+}
+
+export function apiDelete(path) {
+  return request(path, { method: 'DELETE' })
+}
+
+/**
+ * Open Google OAuth login — passes role as query param so backend
+ * stores it in session and assigns it on callback.
+ */
+export function openGoogleLogin(role) {
+  window.location.href = `/auth/google/login?role=${encodeURIComponent(role || 'manager')}`
 }

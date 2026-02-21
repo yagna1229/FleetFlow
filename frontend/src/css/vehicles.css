@@ -1,0 +1,71 @@
+/* ── Vehicle Registry ── */
+
+.vehicleWrap {
+    display: grid;
+    gap: 20px;
+}
+
+/* ── Vehicle cards for mobile ── */
+
+.vehicleActions {
+    display: flex;
+    gap: 8px;
+}
+
+.vehicleActions button {
+    padding: 5px 10px !important;
+    font-size: 12px;
+    border-radius: 8px;
+}
+
+/* ── Form styles ── */
+
+.vehicleForm {
+    max-width: 640px;
+}
+
+.vehicleForm .formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+@media (max-width: 640px) {
+    .vehicleForm .formRow {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Detail page ── */
+
+.vehicleDetail {
+    display: grid;
+    gap: 20px;
+}
+
+.vehicleInfoGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+}
+
+.vehicleInfoItem {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radiusSm);
+    padding: 14px 16px;
+}
+
+.vehicleInfoLabel {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 4px;
+}
+
+.vehicleInfoValue {
+    font-size: 16px;
+    font-weight: 600;
+}

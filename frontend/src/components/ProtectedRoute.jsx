@@ -1,40 +1,42 @@
-import { useEffect, useState } from 'react'
-import { Navigate, useLocation } from 'react-router-dom'
-import { apiGet } from '../api/client.js'
-import '../css/shared.css'
+/**
+ * ProtectedRoute — checks auth via Redux + role-based access.
+ * Redirects to /login if not authenticated, /unauthorized if role not allowed.
+ */
+import { useEffect } from 'react'
+import { Navigate, Outlet, useLocation } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { checkAuth } from '../store/slices/authSlice'
+import { canAccess } from '../constants/roles'
+import LoadingSpinner from './LoadingSpinner'
 
-export default function ProtectedRoute({ children }) {
+export default function ProtectedRoute({ allowedRoles }) {
   const location = useLocation()
-  const [state, setState] = useState({ loading: true, authed: false })
+  const dispatch = useDispatch()
+  const { isAuthenticated, role, status } = useSelector((state) => state.auth)
 
   useEffect(() => {
-    let mounted = true
-
-    ;(async () => {
-      try {
-        await apiGet('/dashboard/')
-        if (mounted) setState({ loading: false, authed: true })
-      } catch {
-        if (mounted) setState({ loading: false, authed: false })
-      }
-    })()
-
-    return () => {
-      mounted = false
+    if (status === 'idle') {
+      dispatch(checkAuth())
     }
-  }, [])
+  }, [dispatch, status])
 
-  if (state.loading) {
-    return (
-      <div className="centerWrap">
-        <div className="spinner" aria-label="Loading" />
-      </div>
-    )
+  if (status === 'idle' || status === 'loading') {
+    return <LoadingSpinner />
   }
 
-  if (!state.authed) {
+  if (!isAuthenticated) {
     return <Navigate to="/login" replace state={{ from: location }} />
   }
 
-  return children
+  // If allowedRoles specified, check against them
+  if (allowedRoles && allowedRoles.length > 0 && !allowedRoles.includes(role)) {
+    return <Navigate to="/unauthorized" replace />
+  }
+
+  // Also check via canAccess for path-based role protection
+  if (role && !canAccess(role, location.pathname)) {
+    return <Navigate to="/unauthorized" replace />
+  }
+
+  return <Outlet />
 }

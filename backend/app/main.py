@@ -1,48 +1,74 @@
+"""
+FleetFlow — FastAPI Application Entry Point.
+
+Uses the modern `lifespan` context manager instead of deprecated on_event.
+Registers all API v1 routers under /api/v1 prefix.
+"""
+
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
 
-from app.config.database import engine, Base
+from app.core.config import settings
+from app.core.database import engine, Base
+
+# Import all models so Base.metadata knows about every table
+import app.models  # noqa: F401
+
+# ── Routers ──
 from app.auth.routes import router as auth_router
 from app.routes.dashboard import router as dashboard_router
+from app.api.v1.routes import router as api_v1_router
 
-# 🔹 Initialize FastAPI app
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Create tables on startup (dev convenience). Use Alembic in prod."""
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+    yield
+    await engine.dispose()
+
+
+# ── App factory ──
 app = FastAPI(
-    title="Odoo Hackathon API",
-    version="1.0.0"
+    title="FleetFlow API",
+    version="1.0.0",
+    description="Fleet & Logistics Management System",
+    lifespan=lifespan,
 )
 
-# 🔹 Session middleware (Required for Google OAuth)
+# ── Middleware ──
 app.add_middleware(
     SessionMiddleware,
-    secret_key="super-secret-session-key"
+    secret_key=settings.SECRET_KEY,
 )
 
-# 🔹 CORS middleware (Important for React frontend)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React app URL
+    allow_origins=[settings.FRONTEND_URL],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# 🔹 Include routers
+# ── Mount routers ──
+# Legacy routes (backward compat for existing frontend)
 app.include_router(auth_router)
 app.include_router(dashboard_router)
 
-# 🔹 Startup event to create tables
-@app.on_event("startup")
-async def on_startup():
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+# New API v1 routes
+app.include_router(api_v1_router)
 
-# 🔹 Root route
+
+# ── Health checks ──
 @app.get("/")
 def root():
-    return {"message": "API is running 🚀"}
+    return {"message": "FleetFlow API is running 🚀"}
 
-# 🔹 Health check
+
 @app.get("/health")
 def health():
     return {"status": "OK"}

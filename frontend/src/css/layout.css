@@ -1,20 +1,24 @@
+/* ── App shell ── */
+
 .appShell {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
 
+/* ── Top nav ── */
+
 .topNav {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(11, 18, 32, 0.65);
-  backdrop-filter: blur(10px);
+  background: rgba(11, 18, 32, 0.75);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 18px;
+  padding: 12px 18px;
 }
 
 .brand {
@@ -33,19 +37,27 @@
 
 .brandText {
   font-weight: 700;
-  letter-spacing: 0.2px;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .navLinks {
   display: flex;
-  gap: 12px;
+  gap: 8px;
 }
 
 .navLinks a {
-  padding: 8px 10px;
+  padding: 7px 12px;
   border-radius: 10px;
   border: 1px solid transparent;
   color: var(--muted);
+  font-size: 14px;
 }
 
 .navLinks a:hover {
@@ -60,14 +72,47 @@
   color: var(--text);
 }
 
-.mainContent {
-  padding: 26px 0;
+.logoutBtn {
+  font-size: 13px;
+  padding: 7px 14px !important;
 }
+
+/* ── App body (sidebar + main) ── */
+
+.appBody {
+  display: flex;
+  overflow: hidden;
+}
+
+.mainContent {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.mainContentAuth {
+  padding: 40px 0;
+}
+
+.mainContentApp {
+  padding: 24px 28px;
+  max-height: calc(100vh - 52px - 42px);
+  /* nav + footer approximate */
+  overflow-y: auto;
+}
+
+/* ── Footer ── */
 
 .footer {
   border-top: 1px solid var(--border);
   color: var(--muted);
-  padding: 14px 18px;
+  padding: 10px 18px;
   font-size: 13px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .mainContentApp {
+    padding: 16px 12px;
+  }
 }

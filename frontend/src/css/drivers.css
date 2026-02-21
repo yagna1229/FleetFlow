@@ -1,0 +1,67 @@
+/* ── Driver Profiles ── */
+
+.driverWrap {
+    display: grid;
+    gap: 20px;
+}
+
+.driverProfileGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+}
+
+.driverProfileCard {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radiusSm);
+    padding: 14px 16px;
+}
+
+.driverProfileLabel {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 4px;
+}
+
+.driverProfileValue {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.safetyScore {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.safetyBar {
+    width: 60px;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.safetyBarFill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 300ms ease;
+}
+
+.licenseAlert {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    border-radius: var(--radiusSm);
+    padding: 10px 14px;
+    color: #f87171;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

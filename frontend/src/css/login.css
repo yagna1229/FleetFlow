@@ -77,3 +77,57 @@
 .authFooterText a {
   color: rgba(255, 255, 255, 0.92);
 }
+
+/* ── Role Selector Cards ── */
+.roleGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0 8px;
+}
+
+.roleCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.roleCard:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.roleCardActive {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: var(--brand2);
+  color: var(--text);
+  box-shadow: 0 0 16px rgba(139, 92, 246, 0.25);
+}
+
+.roleCardIcon {
+  font-size: 24px;
+}
+
+.roleCardLabel {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.roleHint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 6px 0 0;
+  opacity: 0.7;
+}

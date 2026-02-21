@@ -1,20 +1,8 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
-from sqlalchemy.ext.asyncio import AsyncSession,create_async_engine
+"""
+Backward-compatible re-export.
 
+Existing code imports from app.config.database — this module now
+delegates everything to the canonical app.core.database module.
+"""
 
-DATABASE_URL = "postgresql+asyncpg://postgres:yagna@localhost:5432/odoo"
-
-engine = create_async_engine(DATABASE_URL,echo=True)
-
-AsyncSessionLocal = sessionmaker(
-    bind=engine,
-    class_=AsyncSession,
-    expire_on_commit=False
-)
-
-async def get_db():
-    async with AsyncSessionLocal() as db:
-        yield db
-
-Base = declarative_base()
+from app.core.database import engine, Base, AsyncSessionLocal, get_db  # noqa: F401

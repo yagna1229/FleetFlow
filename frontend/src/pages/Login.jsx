@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { apiPost, openGoogleLogin } from '../api/client.js'
+import { ROLES, ROLE_META } from '../constants/roles.js'
 import '../css/login.css'
 
 export default function Login() {
@@ -13,10 +14,15 @@ export default function Login() {
   }, [location.state])
 
   const [form, setForm] = useState({ email: '', password: '' })
+  const [selectedRole, setSelectedRole] = useState(null)
   const [ui, setUi] = useState({ loading: false })
 
   async function onSubmit(e) {
     e.preventDefault()
+    if (!selectedRole) {
+      toast.error('Please select your role first')
+      return
+    }
     setUi({ loading: true })
 
     try {
@@ -40,7 +46,25 @@ export default function Login() {
     <div className="authPage">
       <div className="authCard">
         <h1 className="authTitle">Welcome back</h1>
-        <p className="authSubTitle">Login to continue to your dashboard.</p>
+        <p className="authSubTitle">Select your role and login to continue.</p>
+
+        {/* ── Role selector cards ── */}
+        <div className="roleGrid">
+          {Object.values(ROLES).map((role) => {
+            const meta = ROLE_META[role]
+            return (
+              <button
+                key={role}
+                type="button"
+                className={`roleCard${selectedRole === role ? ' roleCardActive' : ''}`}
+                onClick={() => setSelectedRole(role)}
+              >
+                <span className="roleCardIcon">{meta.icon}</span>
+                <span className="roleCardLabel">{meta.label}</span>
+              </button>
+            )
+          })}
+        </div>
 
         <form className="authForm" onSubmit={onSubmit}>
           <label className="field">
@@ -69,7 +93,7 @@ export default function Login() {
             />
           </label>
 
-          <button className="primaryBtn" disabled={ui.loading} type="submit">
+          <button className="primaryBtn" disabled={ui.loading || !selectedRole} type="submit">
             {ui.loading ? 'Signing in…' : 'Login'}
           </button>
         </form>
@@ -80,12 +104,21 @@ export default function Login() {
           <div className="divider" />
         </div>
 
-        <button className="googleBtn" type="button" onClick={openGoogleLogin}>
+        <button
+          className="googleBtn"
+          type="button"
+          disabled={!selectedRole}
+          onClick={() => openGoogleLogin(selectedRole)}
+          title={!selectedRole ? 'Select a role first' : ''}
+        >
           Continue with Google
         </button>
+        {!selectedRole && (
+          <p className="roleHint">⬆ Select a role above to enable Google login</p>
+        )}
 
         <p className="authFooterText">
-          Don’t have an account? <Link to="/signup">Create one</Link>
+          Don't have an account? <Link to="/signup">Create one</Link>
         </p>
       </div>
     </div>

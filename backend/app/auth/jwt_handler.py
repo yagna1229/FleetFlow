@@ -1,21 +1,12 @@
-from datetime import datetime,timedelta
-import os
-from jose import jwt
-from dotenv import load_dotenv
+"""
+Backward-compatible re-export.
 
-load_dotenv()
+Existing code imports from app.auth.jwt_handler — this module now
+delegates to the canonical app.core.security module.
+"""
 
-SECRET_KEY = os.getenv("SECRET_KEY") or os.getenv("ECRET_KEY") or "change-me"
-ALGORITHM = os.getenv("ALGORITHM") or os.getenv("ALGORIGHM") or "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES") or "60")
-
-
-def create_acess_token(data:dict):
-    to_encode = data.copy()
-    expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    to_encode.update({"exp":expire})
-    return jwt.encode(to_encode,SECRET_KEY,algorithm=ALGORITHM)
-
-def verify_token(token:str):
-    return jwt.decode(token,SECRET_KEY,algorithms=[ALGORITHM])
-
+from app.core.security import (  # noqa: F401
+    create_access_token as create_acess_token,   # preserve the original typo for compat
+    create_access_token,
+    verify_token,
+)
