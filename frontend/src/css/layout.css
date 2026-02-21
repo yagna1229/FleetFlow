@@ -96,11 +96,13 @@
   padding: 40px 0;
 }
 
-.mainContentApp {
+main.mainContent.mainContentApp,
+.mainContentApp,
+.mainContentapp {
   padding: 24px 28px;
   max-height: calc(100vh - 52px - 42px);
   overflow-y: auto;
-  background: var(--primary-50);
+  background-color: #0000000d;
 }
 
 /* ── Footer ── */

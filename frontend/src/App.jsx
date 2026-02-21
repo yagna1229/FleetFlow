@@ -1,36 +1,36 @@
 /**
  * App root — complete routing with RBAC.
  */
-import { Navigate, Route, Routes } from 'react-router-dom'
-import Layout from './components/Layout'
-import ProtectedRoute from './components/ProtectedRoute'
-import Login from './pages/Login'
-import Signup from './pages/Signup'
-import Unauthorized from './pages/Unauthorized'
-import Dashboard from './pages/Dashboard'
-import VerifyEmail from './pages/VerifyEmail'
-import ForgotPassword from './pages/ForgotPassword'
-import { ROUTES } from './constants/routes'
+import { Navigate, Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Unauthorized from "./pages/Unauthorized";
+import Dashboard from "./pages/Dashboard";
+import VerifyEmail from "./pages/VerifyEmail";
+import ForgotPassword from "./pages/ForgotPassword";
+import { ROUTES } from "./constants/routes";
 
 /* ── Vehicle pages ── */
-import VehicleListPage from './features/vehicles/VehicleListPage'
-import VehicleFormPage from './features/vehicles/VehicleFormPage'
-import VehicleDetailPage from './features/vehicles/VehicleDetailPage'
+import VehicleListPage from "./features/vehicles/VehicleListPage";
+import VehicleFormPage from "./features/vehicles/VehicleFormPage";
+import VehicleDetailPage from "./features/vehicles/VehicleDetailPage";
 
 /* ── Driver pages ── */
-import DriverListPage from './features/drivers/DriverListPage'
-import DriverFormPage from './features/drivers/DriverFormPage'
-import DriverDetailPage from './features/drivers/DriverDetailPage'
+import DriverListPage from "./features/drivers/DriverListPage";
+import DriverFormPage from "./features/drivers/DriverFormPage";
+import DriverDetailPage from "./features/drivers/DriverDetailPage";
 
 /* ── Trip pages ── */
-import TripListPage from './features/trips/TripListPage'
-import TripFormPage from './features/trips/TripFormPage'
-import TripDetailPage from './features/trips/TripDetailPage'
+import TripListPage from "./features/trips/TripListPage";
+import TripFormPage from "./features/trips/TripFormPage";
+import TripDetailPage from "./features/trips/TripDetailPage";
 
 /* ── Other feature pages ── */
-import MaintenancePage from './features/maintenance/MaintenancePage'
-import ExpensesPage from './features/expenses/ExpensesPage'
-import AnalyticsPage from './features/analytics/AnalyticsPage'
+import MaintenancePage from "./features/maintenance/MaintenancePage";
+import ExpensesPage from "./features/expenses/ExpensesPage";
+import AnalyticsPage from "./features/analytics/AnalyticsPage";
 
 function App() {
   return (
@@ -78,7 +78,7 @@ function App() {
         <Route path="*" element={<Navigate to={ROUTES.LOGIN} replace />} />
       </Route>
     </Routes>
-  )
+  );
 }
 
-export default App
+export default App;

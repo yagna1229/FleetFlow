@@ -2,42 +2,39 @@
    SIGNUP PAGE — Inherits login.css, orange accent overrides
    ================================================================ */
 
-@import './login.css';
+@import "./login.css";
 
 /* ── Orange accent for signup ── */
 .authPage .authCard::before {
-    background: var(--gradient-accent);
+  background: var(--gradient-accent);
 }
 
 .authPage .authLogo img {
-    border-color: var(--accent-400);
-    box-shadow: 0 4px 16px rgba(249, 115, 22, 0.2);
+  border-color: var(--accent-400);
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.2);
 }
 
 .authPage .authLogo img:hover {
-    box-shadow: 0 6px 24px rgba(249, 115, 22, 0.35);
+  box-shadow: 0 6px 24px rgba(249, 115, 22, 0.35);
 }
 
-.authPage .primaryBtn {
-    border-color: var(--accent-500);
-    color: var(--accent-600);
+.authPage .authForm .primaryBtn {
+  background: var(--gradient-accent);
+  border-color: transparent;
+  color: var(--text-light);
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.3);
 }
 
-.authPage .primaryBtn::before {
-    background: var(--gradient-accent);
-}
-
-.authPage .primaryBtn:hover:not(:disabled) {
-    border-color: var(--accent-500);
-    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.25);
+.authPage .authForm .primaryBtn:hover:not(:disabled) {
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.4);
 }
 
 .authPage .roleDropdown:focus {
-    border-color: var(--accent-500);
-    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
+  border-color: var(--accent-500);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
 }
 
 .authPage .field input:focus {
-    border-color: var(--accent-500);
-    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
+  border-color: var(--accent-500);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
 }

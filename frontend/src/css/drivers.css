@@ -1,70 +1,70 @@
 /* ── Driver Profiles — White theme ── */
 
 .driverWrap {
-    display: grid;
-    gap: 20px;
+  display: grid;
+  gap: 20px;
 }
 
 .driverProfileGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
 }
 
 .driverProfileCard {
-    background: var(--bg-light);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-sm);
-    padding: 14px 16px;
-    box-shadow: var(--shadow-soft);
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-soft);
 }
 
 .driverProfileLabel {
-    color: var(--text-muted);
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-    margin-bottom: 4px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 4px;
 }
 
 .driverProfileValue {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text-dark);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
 }
 
 .safetyScore {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
 }
 
 .safetyBar {
-    width: 60px;
-    height: 6px;
-    border-radius: 999px;
-    background: var(--primary-200);
-    overflow: hidden;
+  width: 60px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--primary-200);
+  overflow: hidden;
 }
 
 .safetyBarFill {
-    height: 100%;
-    border-radius: 999px;
-    transition: width 300ms ease;
+  height: 100%;
+  border-radius: 999px;
+  transition: width 300ms ease;
 }
 
 .licenseAlert {
-    background: rgba(239, 68, 68, 0.06);
-    border: 1px solid rgba(239, 68, 68, 0.2);
-    border-radius: var(--radius-sm);
-    padding: 10px 14px;
-    color: #dc2626;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  color: #dc2626;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }

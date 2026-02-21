@@ -36,11 +36,14 @@
   text-decoration: none;
 }
 
-.sidebarLinkActive {
-  background: var(--secondary-50);
-  border-color: var(--secondary-200);
-  color: var(--secondary-700);
-  font-weight: 600;
+.sidebar .sidebarNav a.sidebarLinkActive,
+.sidebar .sidebarNav a.sidebarLink.active {
+  background: linear-gradient(135deg, var(--secondary-100) 0%, var(--secondary-200) 50%, var(--secondary-300) 100%) !important;
+  color: var(--secondary-700) !important;
+  font-weight: 600 !important;
+  border-color: transparent !important;
+  border-left: 3px solid var(--secondary-500) !important;
+  text-decoration: none !important;
 }
 
 .sidebarIcon {

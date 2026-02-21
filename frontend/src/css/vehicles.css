@@ -1,73 +1,73 @@
 /* ── Vehicle Registry — White theme ── */
 
 .vehicleWrap {
-    display: grid;
-    gap: 20px;
+  display: grid;
+  gap: 20px;
 }
 
 /* ── Vehicle cards for mobile ── */
 
 .vehicleActions {
-    display: flex;
-    gap: 8px;
+  display: flex;
+  gap: 8px;
 }
 
 .vehicleActions button {
-    padding: 5px 10px !important;
-    font-size: 12px;
-    border-radius: var(--radius-sm);
+  padding: 5px 10px !important;
+  font-size: 12px;
+  border-radius: var(--radius-sm);
 }
 
 /* ── Form styles ── */
 
 .vehicleForm {
-    max-width: 640px;
+  max-width: 640px;
 }
 
 .vehicleForm .formRow {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
 @media (max-width: 640px) {
-    .vehicleForm .formRow {
-        grid-template-columns: 1fr;
-    }
+  .vehicleForm .formRow {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ── Detail page ── */
 
 .vehicleDetail {
-    display: grid;
-    gap: 20px;
+  display: grid;
+  gap: 20px;
 }
 
 .vehicleInfoGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
 }
 
 .vehicleInfoItem {
-    background: var(--bg-light);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-sm);
-    padding: 14px 16px;
-    box-shadow: var(--shadow-soft);
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-soft);
 }
 
 .vehicleInfoLabel {
-    color: var(--text-muted);
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-    margin-bottom: 4px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 4px;
 }
 
 .vehicleInfoValue {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text-dark);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
 }

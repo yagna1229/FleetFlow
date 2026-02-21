@@ -2,31 +2,41 @@
  * Layout — top nav + sidebar + main content area.
  * Auth pages (login/signup) use full-width centered layout without sidebar.
  */
-import { Link, Outlet, useLocation } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { logoutUser } from '../store/slices/authSlice'
-import Sidebar from './Sidebar'
-import '../css/layout.css'
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../store/slices/authSlice";
+import Sidebar from "./Sidebar";
+import "../css/layout.css";
 
 export default function Layout() {
-  const location = useLocation()
-  const dispatch = useDispatch()
+  const location = useLocation();
+  const dispatch = useDispatch();
   const isAuthPage =
-    location.pathname.startsWith('/login') ||
-    location.pathname.startsWith('/signup') ||
-    location.pathname.startsWith('/forgot-password') ||
-    location.pathname.startsWith('/verify-email')
+    location.pathname.startsWith("/login") ||
+    location.pathname.startsWith("/signup") ||
+    location.pathname.startsWith("/forgot-password") ||
+    location.pathname.startsWith("/verify-email");
 
   const handleLogout = async () => {
-    await dispatch(logoutUser())
-    window.location.href = '/login'
-  }
+    await dispatch(logoutUser());
+    window.location.href = "/login";
+  };
 
   return (
     <div className="appShell">
       <header className="topNav">
         <div className="brand">
-          <div className="brandMark" aria-hidden="true" />
+          <img
+            src="/Gemini_Generated_Image_sl6nqsl6nqsl6nqs.png"
+            alt="FleetFlow Logo"
+            style={{
+              width: "32px",
+              height: "32px",
+              borderRadius: "50%",
+              border: "2px solid var(--secondary-400)",
+              objectFit: "cover",
+            }}
+          />
           <span className="brandText">FleetFlow</span>
         </div>
 
@@ -38,10 +48,16 @@ export default function Layout() {
           )}
           {isAuthPage && (
             <nav className="navLinks">
-              <Link className={location.pathname === '/login' ? 'active' : ''} to="/login">
+              <Link
+                className={location.pathname === "/login" ? "active" : ""}
+                to="/login"
+              >
                 Login
               </Link>
-              <Link className={location.pathname === '/signup' ? 'active' : ''} to="/signup">
+              <Link
+                className={location.pathname === "/signup" ? "active" : ""}
+                to="/signup"
+              >
                 Signup
               </Link>
             </nav>
@@ -66,5 +82,5 @@ export default function Layout() {
         <span>© {new Date().getFullYear()} FleetFlow</span>
       </footer>
     </div>
-  )
+  );
 }

@@ -4,225 +4,225 @@
  */
 
 .analyticsWrap {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    padding: 24px 0;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* ── Top KPIs ── */
 .analyticsTopKPIs {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
 }
 
 .analyticsKpiCard {
-    background: var(--bg-light);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    box-shadow: var(--shadow-soft);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    transition: var(--transition-fast);
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: var(--transition-fast);
 }
 
 .analyticsKpiCard:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
 }
 
 .analyticsKpiLabel {
-    color: var(--text-muted);
-    font-size: 1rem;
-    font-weight: 500;
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .analyticsKpiValue {
-    font-size: 2rem;
-    font-weight: 700;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .analyticsKpiValue.positive {
-    color: #10b981;
-    /* Emerald green for positive ROI */
+  color: #10b981;
+  /* Emerald green for positive ROI */
 }
-
 
 /* ── Charts Row ── */
 .analyticsChartsRow {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 24px;
 }
 
 .analyticsChartCard {
-    background: var(--bg-light);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    box-shadow: var(--shadow-soft);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background: var(--primary-800);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .analyticsChartTitle {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--text-dark);
-    margin-bottom: 24px;
-    align-self: flex-start;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 24px;
+  align-self: flex-start;
 }
 
 /* SVG Chart Elements */
 .svgChart {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    overflow: visible;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  overflow: visible;
 }
 
 .svgGridLine {
-    stroke: var(--primary-200);
-    stroke-width: 1;
-    stroke-dasharray: 4 4;
+  stroke: var(--primary-700);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
 }
 
 .svgAxisLine {
-    stroke: var(--primary-300);
-    stroke-width: 2;
+  stroke: var(--primary-600);
+  stroke-width: 2;
 }
 
 .svgAxisText {
-    fill: var(--text-muted);
-    font-size: 12px;
-    font-family: inherit;
+  fill: var(--primary-200);
+  font-size: 12px;
+  font-family: inherit;
 }
 
 .svgLinePath {
-    fill: none;
-    stroke: var(--secondary-500);
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+  fill: none;
+  stroke: var(--secondary-500);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .svgLineNode {
-    fill: var(--bg-light);
-    stroke: var(--secondary-500);
-    stroke-width: 2;
-    transition: var(--transition-fast);
-    cursor: pointer;
+  fill: var(--bg-light);
+  stroke: var(--secondary-500);
+  stroke-width: 2;
+  transition: var(--transition-fast);
+  cursor: pointer;
 }
 
 .svgLineNode:hover {
-    fill: var(--secondary-500);
-    r: 6;
+  fill: var(--secondary-500);
+  r: 6;
 }
 
 .svgBar {
-    fill: var(--primary-100);
-    stroke: var(--primary-400);
-    stroke-width: 2;
-    transition: var(--transition-fast);
-    cursor: pointer;
+  fill: var(--primary-100);
+  stroke: var(--primary-400);
+  stroke-width: 2;
+  transition: var(--transition-fast);
+  cursor: pointer;
 }
 
 .svgBar:hover {
-    fill: var(--primary-200);
-    stroke: var(--secondary-500);
+  fill: var(--primary-200);
+  stroke: var(--secondary-500);
 }
 
 /* Tooltips */
 .chartTooltip {
-    position: absolute;
-    background: var(--bg-dark);
-    color: var(--text-light);
-    padding: 8px 12px;
-    border-radius: var(--radius-sm);
-    font-size: 0.85rem;
-    font-weight: 500;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.2s;
-    transform: translate(-50%, -100%);
-    margin-top: -10px;
-    box-shadow: var(--shadow-strong);
-    white-space: nowrap;
-    z-index: 10;
+  position: absolute;
+  background: rgba(17, 24, 39, 0.95) !important;
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+  opacity: 1;
+  /* Fixed visibility */
+  transition: opacity 0.2s;
+  transform: translate(-50%, -100%);
+  margin-top: -10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  z-index: 1000;
 }
 
 .chartTooltip::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -6px;
-    border-width: 6px;
-    border-style: solid;
-    border-color: var(--bg-dark) transparent transparent transparent;
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(17, 24, 39, 0.95) transparent transparent transparent;
 }
-
 
 /* ── Financial Summary Table ── */
 .analyticsTableSection {
-    background: var(--bg-light);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-lg);
-    padding: 24px;
-    box-shadow: var(--shadow-soft);
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
 }
 
 .analyticsTableTitle {
-    display: inline-block;
-    padding: 8px 24px;
-    border: 2px solid var(--secondary-500);
-    border-radius: var(--radius-lg);
-    color: var(--secondary-600);
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 24px;
-    margin-left: 50%;
-    transform: translateX(-50%);
+  display: inline-block;
+  padding: 8px 24px;
+  border: 2px solid var(--secondary-500);
+  border-radius: var(--radius-lg);
+  color: var(--secondary-600);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 24px;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 .analyticsTable {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
 }
 
 .analyticsTable th {
-    color: var(--accent-600);
-    /* Similar to the pinkish/orange in the prompt */
-    font-weight: 600;
-    padding: 16px;
-    border-bottom: 2px solid var(--primary-200);
-    font-size: 1.1rem;
+  color: var(--accent-600);
+  /* Similar to the pinkish/orange in the prompt */
+  font-weight: 600;
+  padding: 16px;
+  border-bottom: 2px solid var(--primary-200);
+  font-size: 1.1rem;
 }
 
 .analyticsTable td {
-    padding: 16px;
-    color: var(--text-dark);
-    font-weight: 500;
-    font-size: 1.1rem;
-    border-bottom: 1px solid var(--primary-100);
+  padding: 16px;
+  color: var(--text-dark);
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-bottom: 1px solid var(--primary-100);
 }
 
 .analyticsTable tr:last-child td {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .analyticsTable .dotsRow td {
-    color: var(--primary-400);
-    font-size: 1.5rem;
-    line-height: 0.5;
-    padding: 8px 16px;
+  color: var(--primary-400);
+  font-size: 1.5rem;
+  line-height: 0.5;
+  padding: 8px 16px;
 }

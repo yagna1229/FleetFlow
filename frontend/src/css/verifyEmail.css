@@ -2,36 +2,36 @@
    VERIFY EMAIL PAGE — Green accent for verification
    ================================================================ */
 
-@import './login.css';
+@import "./login.css";
 
 .authPage .authCard::before {
-    background: linear-gradient(135deg, #34d399, #059669);
+  background: linear-gradient(135deg, #34d399, #059669);
 }
 
 .authPage .authLogo img {
-    border-color: #10b981;
-    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.2);
+  border-color: #10b981;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.2);
 }
 
 .authPage .authLogo img:hover {
-    box-shadow: 0 6px 24px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 6px 24px rgba(16, 185, 129, 0.35);
 }
 
 .authPage .primaryBtn {
-    border-color: #10b981;
-    color: #059669;
+  border-color: #10b981;
+  color: #059669;
 }
 
 .authPage .primaryBtn::before {
-    background: linear-gradient(135deg, #34d399, #059669);
+  background: linear-gradient(135deg, #34d399, #059669);
 }
 
 .authPage .primaryBtn:hover:not(:disabled) {
-    border-color: #10b981;
-    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
+  border-color: #10b981;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
 }
 
 .authPage .field input:focus {
-    border-color: #10b981;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
 }

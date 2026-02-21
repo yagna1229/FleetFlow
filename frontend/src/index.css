@@ -38,9 +38,21 @@
   --accent-900: #7c2d12;
 
   /* ========= GRADIENTS ========= */
-  --gradient-primary: linear-gradient(135deg, var(--primary-600), var(--primary-800));
-  --gradient-secondary: linear-gradient(135deg, var(--secondary-400), var(--secondary-600));
-  --gradient-accent: linear-gradient(135deg, var(--accent-400), var(--accent-600));
+  --gradient-primary: linear-gradient(
+    135deg,
+    var(--primary-600),
+    var(--primary-800)
+  );
+  --gradient-secondary: linear-gradient(
+    135deg,
+    var(--secondary-400),
+    var(--secondary-600)
+  );
+  --gradient-accent: linear-gradient(
+    135deg,
+    var(--accent-400),
+    var(--accent-600)
+  );
 
   /* ========= TEXT COLORS ========= */
   --text-dark: #111827;
