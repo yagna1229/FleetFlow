@@ -1,0 +1,52 @@
+.dashWrap {
+  width: min(920px, calc(100% - 32px));
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+}
+
+.dashHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.dashTitle {
+  margin: 0;
+  font-size: 28px;
+}
+
+.dashSubTitle {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+.dashActions {
+  display: flex;
+  gap: 10px;
+}
+
+.dashCard {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.dashCardLabel {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.dashCardValue {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.dashHint {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}

@@ -1,0 +1,12 @@
+sqlalchemy
+python-dotenv
+authlib
+passlib
+python-jose 
+passlib[bcrypt]
+fastapi
+uvicorn
+itsdangerous
+asyncpg
+email_validator
+httpx
