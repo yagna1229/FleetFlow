@@ -21,6 +21,7 @@ export default function TripDetailPage() {
     const { id } = useParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const { role } = useSelector((s) => s.auth)
     const [trip, setTrip] = useState(null)
     const [loading, setLoading] = useState(true)
     const [showDispatch, setShowDispatch] = useState(false)
@@ -140,24 +141,26 @@ export default function TripDetailPage() {
             </div>
 
             {/* ── Actions ── */}
-            <div className="tripActions">
-                {trip.status === 'DRAFT' && (
-                    <>
-                        <button className="primaryBtn" onClick={() => { setOdometer(''); setShowDispatch(true) }}>
-                            🚀 Dispatch Trip
-                        </button>
-                        <button className="dangerBtn" onClick={handleCancel}>Cancel Trip</button>
-                    </>
-                )}
-                {trip.status === 'DISPATCHED' && (
-                    <>
-                        <button className="primaryBtn" onClick={() => { setOdometer(''); setShowComplete(true) }}>
-                            ✅ Complete Trip
-                        </button>
-                        <button className="dangerBtn" onClick={handleCancel}>Cancel Trip</button>
-                    </>
-                )}
-            </div>
+            {['manager', 'dispatcher'].includes(role) && (
+                <div className="tripActions">
+                    {trip.status === 'DRAFT' && (
+                        <>
+                            <button className="primaryBtn" onClick={() => { setOdometer(''); setShowDispatch(true) }}>
+                                🚀 Dispatch Trip
+                            </button>
+                            <button className="dangerBtn" onClick={handleCancel}>Cancel Trip</button>
+                        </>
+                    )}
+                    {trip.status === 'DISPATCHED' && (
+                        <>
+                            <button className="primaryBtn" onClick={() => { setOdometer(''); setShowComplete(true) }}>
+                                ✅ Complete Trip
+                            </button>
+                            <button className="dangerBtn" onClick={handleCancel}>Cancel Trip</button>
+                        </>
+                    )}
+                </div>
+            )}
 
             {/* ── Dispatch modal ── */}
             <Modal isOpen={showDispatch} onClose={() => setShowDispatch(false)} title="Dispatch Trip">

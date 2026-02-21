@@ -17,6 +17,7 @@ export default function MaintenancePage() {
     const dispatch = useDispatch()
     const { items } = useSelector((s) => s.maintenance)
     const { items: vehicles } = useSelector((s) => s.vehicles)
+    const { role } = useSelector((s) => s.auth)
     const [showForm, setShowForm] = useState(false)
     const [form, setForm] = useState({ vehicle_id: '', service_type: '', description: '', cost: '0', service_date: '' })
     const [submitting, setSubmitting] = useState(false)
@@ -67,7 +68,7 @@ export default function MaintenancePage() {
         },
         {
             key: 'actions', label: '',
-            render: (r) => !r.is_completed && (
+            render: (r) => !r.is_completed && ['manager', 'safety_officer'].includes(role) && (
                 <button className="secondaryBtn" style={{ padding: '4px 10px', fontSize: 12 }} onClick={(e) => { e.stopPropagation(); handleComplete(r.id) }}>
                     ✓ Complete
                 </button>
@@ -82,7 +83,9 @@ export default function MaintenancePage() {
                     <h1 className="pageTitle">Maintenance & Service Logs</h1>
                     <p className="pageSubtitle">Track preventative and reactive vehicle maintenance</p>
                 </div>
-                <button className="primaryBtn" onClick={() => setShowForm(true)}>+ Log Maintenance</button>
+                {['manager', 'safety_officer'].includes(role) && (
+                    <button className="primaryBtn" onClick={() => setShowForm(true)}>+ Log Maintenance</button>
+                )}
             </div>
 
             <DataTable columns={columns} data={items} emptyMessage="No maintenance logs yet." />

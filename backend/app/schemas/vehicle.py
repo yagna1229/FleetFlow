@@ -40,8 +40,8 @@ class VehicleOut(BaseModel):
     vehicle_type: VehicleType
     license_plate: str
     max_capacity_kg: Decimal
-    odometer_km: Decimal
-    acquisition_cost: Decimal
+    odometer_km: Decimal | None = None
+    acquisition_cost: Decimal | None = None
     status: VehicleStatus
     region: str | None
     created_at: datetime

@@ -19,6 +19,7 @@ export default function TripListPage() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { items, status, totalCount } = useSelector((s) => s.trips)
+    const { role } = useSelector((s) => s.auth)
     const [page, setPage] = useState(1)
     const [statusFilter, setStatusFilter] = useState(null)
 
@@ -44,9 +45,11 @@ export default function TripListPage() {
                     <h1 className="pageTitle">Trip Dispatcher</h1>
                     <p className="pageSubtitle">Create and manage shipment trips</p>
                 </div>
-                <button className="primaryBtn" onClick={() => navigate(ROUTES.TRIP_NEW)}>
-                    + Create Trip
-                </button>
+                {['manager', 'dispatcher'].includes(role) && (
+                    <button className="primaryBtn" onClick={() => navigate(ROUTES.TRIP_NEW)}>
+                        + Create Trip
+                    </button>
+                )}
             </div>
 
             <div className="filterBar">

@@ -1,5 +1,8 @@
 """Trip expenses API. RBAC: manager + financial_analyst."""
 
+import csv
+import io
+
 from fastapi import APIRouter, Depends, Response
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -20,7 +23,8 @@ async def create_expense(
     current_user: User = Depends(require_role("manager")),
 ):
     svc = ExpenseService(db)
-    return await svc.create_expense(data, logged_by=current_user.id)
+    item = await svc.create_expense(data, logged_by=current_user.id)
+    return ExpenseOut.model_validate(item)
 
 
 @router.get("/", response_model=list[ExpenseOut])
@@ -38,7 +42,35 @@ async def list_expenses(
     response.headers["X-Total-Count"] = str(total)
     response.headers["X-Page"] = str(pagination.page)
     response.headers["X-Per-Page"] = str(pagination.per_page)
-    return items
+    return [ExpenseOut.model_validate(x) for x in items]
+
+
+@router.get("/export")
+async def export_expenses(
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(require_role("manager", "financial_analyst")),
+):
+    svc = ExpenseService(db)
+    items, _ = await svc.list_expenses(limit=10000)
+    
+    output = io.StringIO()
+    writer = csv.writer(output)
+    writer.writerow(["ID", "Trip ID", "Category", "Amount", "Description", "Date"])
+    for item in items:
+        writer.writerow([
+            item.id,
+            item.trip_id,
+            item.category.value if item.category else "",
+            item.amount,
+            item.description or "",
+            item.expense_date
+        ])
+    
+    return Response(
+        content=output.getvalue(),
+        media_type="text/csv",
+        headers={"Content-Disposition": "attachment; filename=expenses.csv"}
+    )
 
 
 @router.get("/{expense_id}", response_model=ExpenseOut)
@@ -48,4 +80,5 @@ async def get_expense(
     current_user: User = Depends(require_role("manager", "financial_analyst")),
 ):
     svc = ExpenseService(db)
-    return await svc.get_expense(expense_id)
+    item = await svc.get_expense(expense_id)
+    return ExpenseOut.model_validate(item)

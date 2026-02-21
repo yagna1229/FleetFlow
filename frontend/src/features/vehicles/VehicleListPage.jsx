@@ -19,6 +19,7 @@ export default function VehicleListPage() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { items, status, totalCount } = useSelector((s) => s.vehicles)
+    const { role } = useSelector((s) => s.auth)
     const [page, setPage] = useState(1)
     const [statusFilter, setStatusFilter] = useState(null)
 
@@ -45,9 +46,11 @@ export default function VehicleListPage() {
                     <h1 className="pageTitle">Vehicle Registry</h1>
                     <p className="pageSubtitle">Manage fleet assets — {items.length} vehicles shown</p>
                 </div>
-                <button className="primaryBtn" onClick={() => navigate(ROUTES.VEHICLE_NEW)}>
-                    + Add Vehicle
-                </button>
+                {role === 'manager' && (
+                    <button className="primaryBtn" onClick={() => navigate(ROUTES.VEHICLE_NEW)}>
+                        + Add Vehicle
+                    </button>
+                )}
             </div>
 
             {/* ── Status filter chips ── */}

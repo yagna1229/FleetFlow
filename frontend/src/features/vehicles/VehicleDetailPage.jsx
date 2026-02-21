@@ -18,6 +18,7 @@ export default function VehicleDetailPage() {
     const { id } = useParams()
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const { role } = useSelector((s) => s.auth)
     const [vehicle, setVehicle] = useState(null)
     const [loading, setLoading] = useState(true)
 
@@ -60,7 +61,7 @@ export default function VehicleDetailPage() {
                 </div>
                 <div style={{ display: 'flex', gap: '8px' }}>
                     <button className="secondaryBtn" onClick={() => navigate(ROUTES.VEHICLES)}>← Back</button>
-                    {vehicle.status !== 'RETIRED' && (
+                    {role === 'manager' && vehicle.status !== 'RETIRED' && (
                         <button className="dangerBtn" onClick={handleRetire}>Retire Vehicle</button>
                     )}
                 </div>
@@ -88,10 +89,12 @@ export default function VehicleDetailPage() {
                     <div className="vehicleInfoLabel">Odometer</div>
                     <div className="vehicleInfoValue">{formatNumber(vehicle.odometer_km)} km</div>
                 </div>
-                <div className="vehicleInfoItem">
-                    <div className="vehicleInfoLabel">Acquisition Cost</div>
-                    <div className="vehicleInfoValue">{formatCurrency(vehicle.acquisition_cost)}</div>
-                </div>
+                {vehicle.acquisition_cost !== undefined && vehicle.acquisition_cost !== null && (
+                    <div className="vehicleInfoItem">
+                        <div className="vehicleInfoLabel">Acquisition Cost</div>
+                        <div className="vehicleInfoValue">{formatCurrency(vehicle.acquisition_cost)}</div>
+                    </div>
+                )}
                 <div className="vehicleInfoItem">
                     <div className="vehicleInfoLabel">Region</div>
                     <div className="vehicleInfoValue">{vehicle.region || '—'}</div>

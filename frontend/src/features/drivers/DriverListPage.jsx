@@ -19,6 +19,7 @@ export default function DriverListPage() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { items, status, totalCount } = useSelector((s) => s.drivers)
+    const { role } = useSelector((s) => s.auth)
     const [page, setPage] = useState(1)
     const [statusFilter, setStatusFilter] = useState(null)
 
@@ -51,9 +52,11 @@ export default function DriverListPage() {
                     <h1 className="pageTitle">Driver Profiles</h1>
                     <p className="pageSubtitle">Manage drivers & compliance — {items.length} drivers shown</p>
                 </div>
-                <button className="primaryBtn" onClick={() => navigate(ROUTES.DRIVER_NEW)}>
-                    + Add Driver
-                </button>
+                {role === 'manager' && (
+                    <button className="primaryBtn" onClick={() => navigate(ROUTES.DRIVER_NEW)}>
+                        + Add Driver
+                    </button>
+                )}
             </div>
 
             <div className="filterBar">

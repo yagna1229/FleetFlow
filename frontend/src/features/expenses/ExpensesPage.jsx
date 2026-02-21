@@ -8,6 +8,7 @@ import { fetchFuelLogs, createFuelLog } from '../../store/slices/fuelSlice'
 import { fetchExpenses, createExpense } from '../../store/slices/expenseSlice'
 import { fetchTrips } from '../../store/slices/tripSlice'
 import { fetchVehicles } from '../../store/slices/vehicleSlice'
+import { apiGet } from '../../api/client'
 import DataTable from '../../components/DataTable'
 import Modal from '../../components/Modal'
 import { formatDate, formatCurrency, formatNumber } from '../../utils/formatters'
@@ -21,6 +22,7 @@ export default function ExpensesPage() {
     const { items: expenses } = useSelector((s) => s.expenses)
     const { items: trips } = useSelector((s) => s.trips)
     const { items: vehicles } = useSelector((s) => s.vehicles)
+    const { role } = useSelector((s) => s.auth)
     const [tab, setTab] = useState('fuel')
     const [showFuelForm, setShowFuelForm] = useState(false)
     const [showExpenseForm, setShowExpenseForm] = useState(false)
@@ -69,6 +71,19 @@ export default function ExpensesPage() {
         finally { setSubmitting(false) }
     }
 
+    const handleExport = async () => {
+        try {
+            const blob = await apiGet('/api/v1/expenses/export', { responseType: 'blob' })
+            const url = window.URL.createObjectURL(new Blob([blob]))
+            const a = document.createElement('a')
+            a.href = url
+            a.download = 'expenses.csv'
+            document.body.appendChild(a)
+            a.click()
+            a.remove()
+        } catch (err) { toast.error('Export failed') }
+    }
+
     const fuelColumns = [
         { key: 'id', label: 'ID', render: (r) => `#${r.id}` },
         { key: 'vehicle_id', label: 'Vehicle' },
@@ -94,16 +109,25 @@ export default function ExpensesPage() {
                     <h1 className="pageTitle">Expenses & Fuel Logging</h1>
                     <p className="pageSubtitle">Track fuel consumption and trip expenses</p>
                 </div>
-                <div style={{ display: 'flex', gap: 8 }}>
-                    <button className="primaryBtn" onClick={() => setShowFuelForm(true)}>+ Fuel Log</button>
-                    <button className="primaryBtn" onClick={() => setShowExpenseForm(true)}>+ Expense</button>
-                </div>
+                {role === 'manager' && (
+                    <div style={{ display: 'flex', gap: 8 }}>
+                        <button className="primaryBtn" onClick={() => setShowFuelForm(true)}>+ Fuel Log</button>
+                        <button className="primaryBtn" onClick={() => setShowExpenseForm(true)}>+ Expense</button>
+                    </div>
+                )}
             </div>
 
             {/* ── Tab switcher ── */}
-            <div className="filterBar">
-                <button className={`filterChip${tab === 'fuel' ? ' filterChipActive' : ''}`} onClick={() => setTab('fuel')}>⛽ Fuel Logs</button>
-                <button className={`filterChip${tab === 'expenses' ? ' filterChipActive' : ''}`} onClick={() => setTab('expenses')}>💳 Trip Expenses</button>
+            <div className="filterBar" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div>
+                    <button className={`filterChip${tab === 'fuel' ? ' filterChipActive' : ''}`} onClick={() => setTab('fuel')}>⛽ Fuel Logs</button>
+                    <button className={`filterChip${tab === 'expenses' ? ' filterChipActive' : ''}`} onClick={() => setTab('expenses')}>💳 Trip Expenses</button>
+                </div>
+                {tab === 'expenses' && (
+                    <button className="secondaryBtn" onClick={handleExport}>
+                        📥 Export CSV
+                    </button>
+                )}
             </div>
 
             {tab === 'fuel' && <DataTable columns={fuelColumns} data={fuelLogs} emptyMessage="No fuel logs yet." />}
