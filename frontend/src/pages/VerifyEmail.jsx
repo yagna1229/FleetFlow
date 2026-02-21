@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { apiPost } from '../api/client.js'
-import '../css/login.css'
+import '../css/verifyEmail.css'
 
 export default function VerifyEmail() {
     const navigate = useNavigate()
@@ -62,6 +62,9 @@ export default function VerifyEmail() {
     return (
         <div className="authPage">
             <div className="authCard">
+                <div className="authLogo">
+                    <img src="/Gemini_Generated_Image_sl6nqsl6nqsl6nqs.png" alt="FleetFlow Logo" />
+                </div>
                 <h1 className="authTitle">Verify Email</h1>
                 <p className="authSubTitle">
                     Enter the 6-digit code sent to your email address.

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { apiPost } from '../api/client.js'
-import '../css/login.css'
+import '../css/forgotPassword.css'
 
 export default function ForgotPassword() {
     const navigate = useNavigate()
@@ -56,6 +56,9 @@ export default function ForgotPassword() {
     return (
         <div className="authPage">
             <div className="authCard">
+                <div className="authLogo">
+                    <img src="/Gemini_Generated_Image_sl6nqsl6nqsl6nqs.png" alt="FleetFlow Logo" />
+                </div>
                 {step === 1 ? (
                     <>
                         <h1 className="authTitle">Forgot Password</h1>

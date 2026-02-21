@@ -1,4 +1,4 @@
-/* ── Command Center Dashboard ── */
+/* ── Command Center Dashboard — White theme ── */
 
 .dashWrap {
   display: grid;
@@ -14,19 +14,20 @@
 }
 
 .kpiCard {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
   padding: 20px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-soft);
   position: relative;
   overflow: hidden;
-  transition: transform 150ms ease, border-color 150ms ease;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
 }
 
 .kpiCard:hover {
   transform: translateY(-2px);
-  border-color: rgba(79, 124, 255, 0.2);
+  border-color: var(--secondary-200);
+  box-shadow: var(--shadow-medium);
 }
 
 .kpiCard::before {
@@ -36,11 +37,11 @@
   left: 0;
   right: 0;
   height: 3px;
-  border-radius: var(--radius) var(--radius) 0 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
 
 .kpiCard.kpiBrand::before {
-  background: linear-gradient(90deg, var(--brand), var(--brand2));
+  background: var(--gradient-secondary);
 }
 
 .kpiCard.kpiWarning::before {
@@ -61,7 +62,7 @@
 }
 
 .kpiLabel {
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -73,10 +74,11 @@
   font-size: 28px;
   font-weight: 700;
   line-height: 1.1;
+  color: var(--text-dark);
 }
 
 .kpiSub {
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 12px;
   margin-top: 6px;
 }
@@ -84,16 +86,18 @@
 /* ── Dashboard sections ── */
 
 .dashSection {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
   padding: 20px;
+  box-shadow: var(--shadow-soft);
 }
 
 .dashSectionTitle {
   font-size: 15px;
   font-weight: 600;
   margin: 0 0 14px;
+  color: var(--text-dark);
 }
 
 /* ── Quick stats bar ── */
@@ -117,13 +121,14 @@
 }
 
 .quickStatLabel {
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 13px;
 }
 
 .quickStatValue {
   font-weight: 600;
   font-size: 14px;
+  color: var(--text-dark);
 }
 
 /* ── Filter bar ── */
@@ -138,21 +143,21 @@
 .filterChip {
   padding: 6px 14px;
   border-radius: 999px;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--muted);
+  border: 1px solid var(--border-light);
+  background: var(--bg-light);
+  color: var(--text-muted);
   font-size: 13px;
   cursor: pointer;
-  transition: all 120ms ease;
+  transition: all var(--transition-fast);
 }
 
 .filterChip:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text);
+  background: var(--primary-100);
+  color: var(--text-dark);
 }
 
 .filterChipActive {
-  background: rgba(79, 124, 255, 0.14);
-  border-color: rgba(79, 124, 255, 0.3);
-  color: var(--text);
+  background: var(--secondary-50);
+  border-color: var(--secondary-300);
+  color: var(--secondary-700);
 }

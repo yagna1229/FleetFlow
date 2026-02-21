@@ -22,6 +22,16 @@ async def get_dashboard_kpis(
     return await svc.get_dashboard_kpis()
 
 
+# Aggregate Dashboard Data for "Big Picture" view
+@router.get("/dashboard-aggregate")
+async def get_dashboard_aggregate(
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    svc = AnalyticsService(db)
+    return await svc.get_dashboard_aggregate()
+
+
 # Deep analytics — manager + financial_analyst
 @router.get("/vehicle/{vehicle_id}/costs", response_model=VehicleCostSummary)
 async def get_vehicle_costs(

@@ -1,13 +1,14 @@
-/* ── Sidebar navigation ── */
+/* ── Sidebar navigation — White theme ── */
 
 .sidebar {
   width: 220px;
-  background: rgba(255, 255, 255, 0.03);
-  border-right: 1px solid var(--border);
+  background: var(--bg-light);
+  border-right: 1px solid var(--border-light);
   padding: 16px 0;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.03);
 }
 
 .sidebarNav {
@@ -22,23 +23,24 @@
   align-items: center;
   gap: 10px;
   padding: 10px 12px;
-  border-radius: 10px;
-  color: var(--muted);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
   border: 1px solid transparent;
-  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+  transition: all var(--transition-fast);
   text-decoration: none;
 }
 
 .sidebarLink:hover {
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--text);
+  background: var(--primary-100);
+  color: var(--text-dark);
   text-decoration: none;
 }
 
 .sidebarLinkActive {
-  background: rgba(79, 124, 255, 0.12);
-  border-color: rgba(79, 124, 255, 0.22);
-  color: var(--text);
+  background: var(--secondary-50);
+  border-color: var(--secondary-200);
+  color: var(--secondary-700);
+  font-weight: 600;
 }
 
 .sidebarIcon {
@@ -59,8 +61,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
+  border-top: 1px solid var(--border-light);
+  color: var(--text-muted);
   font-size: 12px;
   text-transform: capitalize;
 }

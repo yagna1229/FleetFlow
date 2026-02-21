@@ -13,6 +13,10 @@ export const fetchDrivers = createAsyncThunk('drivers/fetchAll', async (params =
     return await apiGet(`/api/v1/drivers/${qs ? '?' + qs : ''}`)
 })
 
+export const fetchDriver = createAsyncThunk('drivers/fetchOne', async (id) => {
+    return await apiGet(`/api/v1/drivers/${id}`)
+})
+
 export const fetchAvailableDrivers = createAsyncThunk('drivers/fetchAvailable', async () => {
     return await apiGet('/api/v1/drivers/available')
 })

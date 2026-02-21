@@ -1,4 +1,4 @@
-/* ── Driver Profiles ── */
+/* ── Driver Profiles — White theme ── */
 
 .driverWrap {
     display: grid;
@@ -12,14 +12,15 @@
 }
 
 .driverProfileCard {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: var(--radiusSm);
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
     padding: 14px 16px;
+    box-shadow: var(--shadow-soft);
 }
 
 .driverProfileLabel {
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
@@ -30,6 +31,7 @@
 .driverProfileValue {
     font-size: 16px;
     font-weight: 600;
+    color: var(--text-dark);
 }
 
 .safetyScore {
@@ -38,13 +40,14 @@
     gap: 6px;
     font-size: 20px;
     font-weight: 700;
+    color: var(--text-dark);
 }
 
 .safetyBar {
     width: 60px;
     height: 6px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--primary-200);
     overflow: hidden;
 }
 
@@ -55,11 +58,11 @@
 }
 
 .licenseAlert {
-    background: rgba(239, 68, 68, 0.1);
-    border: 1px solid rgba(239, 68, 68, 0.25);
-    border-radius: var(--radiusSm);
+    background: rgba(239, 68, 68, 0.06);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: var(--radius-sm);
     padding: 10px 14px;
-    color: #f87171;
+    color: #dc2626;
     font-size: 13px;
     display: flex;
     align-items: center;

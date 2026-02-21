@@ -1,17 +1,22 @@
+/* ================================================================
+   GLOBAL STYLES — Clean white theme
+   All colors from root CSS variables in index.css
+   ================================================================ */
+
 :root {
-  --bg: #0b1220;
-  --panel: rgba(255, 255, 255, 0.06);
-  --panel2: rgba(255, 255, 255, 0.08);
-  --text: rgba(255, 255, 255, 0.92);
-  --muted: rgba(255, 255, 255, 0.68);
-  --border: rgba(255, 255, 255, 0.12);
-  --brand: #4f7cff;
-  --brand2: #8b5cf6;
+  --bg: var(--bg-light);
+  --panel: var(--bg-light);
+  --panel2: var(--primary-50);
+  --text: var(--text-dark);
+  --muted: var(--text-muted);
+  --border: var(--border-light);
+  --brand: var(--secondary-500);
+  --brand2: var(--secondary-700);
   --danger: #ef4444;
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --shadow: var(--shadow-medium);
   --radius: 14px;
   --radiusSm: 10px;
-  --focus: 0 0 0 3px rgba(79, 124, 255, 0.35);
+  --focus: 0 0 0 3px rgba(6, 182, 212, 0.2);
 }
 
 * {
@@ -25,21 +30,24 @@ body {
 
 body {
   margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+  font-family: 'Segoe UI', ui-sans-serif, system-ui, -apple-system, Roboto,
     Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
   color: var(--text);
-  background: radial-gradient(1200px 700px at 20% 10%, rgba(79, 124, 255, 0.32), transparent 60%),
-    radial-gradient(1000px 500px at 80% 0%, rgba(139, 92, 246, 0.28), transparent 55%),
-    radial-gradient(900px 600px at 70% 95%, rgba(16, 185, 129, 0.16), transparent 55%),
-    var(--bg);
+  background: var(--primary-100);
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(6, 182, 212, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 0%, rgba(249, 115, 22, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 95%, rgba(16, 185, 129, 0.04) 0%, transparent 50%);
 }
 
 a {
-  color: inherit;
+  color: var(--secondary-600);
   text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
 a:hover {
+  color: var(--secondary-500);
   text-decoration: underline;
 }
 
@@ -58,61 +66,70 @@ code {
   margin: 0 auto;
 }
 
+/* ── Buttons ── */
 .primaryBtn,
 .secondaryBtn,
 .dangerBtn,
 .googleBtn {
-  border: 1px solid transparent;
-  border-radius: 12px;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
   padding: 12px 14px;
   cursor: pointer;
-  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+  transition: all var(--transition-fast);
 }
 
 .primaryBtn {
-  background: linear-gradient(135deg, var(--brand), var(--brand2));
-  color: #fff;
-  box-shadow: 0 10px 25px rgba(79, 124, 255, 0.25);
+  background: var(--gradient-secondary);
+  color: var(--text-light);
+  border-color: var(--secondary-500);
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
 }
 
 .primaryBtn:hover {
   transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(6, 182, 212, 0.3);
 }
 
 .primaryBtn:disabled {
-  opacity: 0.65;
+  opacity: 0.5;
   cursor: not-allowed;
   transform: none;
 }
 
 .secondaryBtn {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: var(--border);
-  color: var(--text);
+  background: var(--bg-light);
+  border-color: var(--border-light);
+  color: var(--text-dark);
 }
 
 .secondaryBtn:hover {
-  background: rgba(255, 255, 255, 0.10);
+  background: var(--primary-50);
+  border-color: var(--primary-300);
 }
 
 .dangerBtn {
-  background: rgba(239, 68, 68, 0.12);
-  border-color: rgba(239, 68, 68, 0.25);
-  color: #fff;
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #dc2626;
 }
 
 .dangerBtn:hover {
-  background: rgba(239, 68, 68, 0.18);
+  background: rgba(239, 68, 68, 0.14);
 }
 
 .googleBtn {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: var(--border);
-  color: var(--text);
+  background: var(--bg-light);
+  border-color: var(--border-light);
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .googleBtn:hover {
-  background: rgba(255, 255, 255, 0.10);
+  background: var(--primary-50);
+  border-color: var(--primary-300);
 }
 
 .primaryBtn:focus,
@@ -125,10 +142,10 @@ input:focus {
 }
 
 .alertError {
-  background: rgba(239, 68, 68, 0.10);
-  border: 1px solid rgba(239, 68, 68, 0.25);
-  color: #fff;
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #dc2626;
   padding: 12px 12px;
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   margin: 12px 0;
 }

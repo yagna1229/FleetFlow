@@ -1,10 +1,11 @@
-/* ── Data table ── */
+/* ── Data table — White theme ── */
 
 .dtWrap {
     overflow-x: auto;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: var(--panel);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-light);
+    background: var(--bg-light);
+    box-shadow: var(--shadow-soft);
 }
 
 .dtTable {
@@ -16,19 +17,19 @@
 .dtTable th {
     text-align: left;
     padding: 12px 16px;
-    color: var(--muted);
+    color: var(--primary-600);
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid var(--border-light);
+    background: var(--primary-50);
 }
 
 .dtTable td {
     padding: 12px 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    color: var(--text);
+    border-bottom: 1px solid var(--primary-100);
+    color: var(--text-dark);
 }
 
 .dtTable tbody tr:last-child td {
@@ -36,7 +37,7 @@
 }
 
 .dtTable tbody tr:hover {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--primary-50);
 }
 
 .dtClickable {
@@ -44,14 +45,14 @@
 }
 
 .dtClickable:hover {
-    background: rgba(79, 124, 255, 0.06) !important;
+    background: var(--secondary-50) !important;
 }
 
 .dtEmpty {
     text-align: center;
     padding: 40px 20px;
-    color: var(--muted);
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    color: var(--text-muted);
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
 }

@@ -1,4 +1,4 @@
-/* ── App shell ── */
+/* ── App shell — White theme ── */
 
 .appShell {
   min-height: 100vh;
@@ -12,13 +12,14 @@
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(11, 18, 32, 0.75);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-light);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 12px 18px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
 .brand {
@@ -31,14 +32,15 @@
   width: 12px;
   height: 12px;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--brand), var(--brand2));
-  box-shadow: 0 0 0 4px rgba(79, 124, 255, 0.15);
+  background: var(--gradient-secondary);
+  box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.12);
 }
 
 .brandText {
   font-weight: 700;
   font-size: 16px;
   letter-spacing: 0.3px;
+  color: var(--text-dark);
 }
 
 .navRight {
@@ -54,22 +56,23 @@
 
 .navLinks a {
   padding: 7px 12px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   border: 1px solid transparent;
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 14px;
+  transition: all var(--transition-fast);
 }
 
 .navLinks a:hover {
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--text);
+  background: var(--primary-100);
+  color: var(--text-dark);
 }
 
 .navLinks a.active {
-  background: rgba(79, 124, 255, 0.14);
-  border-color: rgba(79, 124, 255, 0.25);
-  color: var(--text);
+  background: var(--secondary-50);
+  border-color: var(--secondary-200);
+  color: var(--secondary-700);
 }
 
 .logoutBtn {
@@ -96,18 +99,18 @@
 .mainContentApp {
   padding: 24px 28px;
   max-height: calc(100vh - 52px - 42px);
-  /* nav + footer approximate */
   overflow-y: auto;
+  background: var(--primary-50);
 }
 
 /* ── Footer ── */
 
 .footer {
-  border-top: 1px solid var(--border);
-  color: var(--muted);
+  border-top: 1px solid var(--border-light);
+  color: var(--text-muted);
   padding: 10px 18px;
   font-size: 13px;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-light);
 }
 
 /* ── Responsive ── */

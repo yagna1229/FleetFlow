@@ -1,4 +1,4 @@
-/* ── Vehicle Registry ── */
+/* ── Vehicle Registry — White theme ── */
 
 .vehicleWrap {
     display: grid;
@@ -15,7 +15,7 @@
 .vehicleActions button {
     padding: 5px 10px !important;
     font-size: 12px;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
 }
 
 /* ── Form styles ── */
@@ -50,14 +50,15 @@
 }
 
 .vehicleInfoItem {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: var(--radiusSm);
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
     padding: 14px 16px;
+    box-shadow: var(--shadow-soft);
 }
 
 .vehicleInfoLabel {
-    color: var(--muted);
+    color: var(--text-muted);
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
@@ -68,4 +69,5 @@
 .vehicleInfoValue {
     font-size: 16px;
     font-weight: 600;
+    color: var(--text-dark);
 }

@@ -5,6 +5,10 @@ export const fetchDashboardKPIs = createAsyncThunk('analytics/dashboard', async 
     return await apiGet('/api/v1/analytics/dashboard')
 })
 
+export const fetchDashboardAggregate = createAsyncThunk('analytics/dashboardAggregate', async () => {
+    return await apiGet('/api/v1/analytics/dashboard-aggregate')
+})
+
 export const fetchVehicleCosts = createAsyncThunk('analytics/vehicleCosts', async (vehicleId) => {
     return await apiGet(`/api/v1/analytics/vehicle/${vehicleId}/costs`)
 })
@@ -17,6 +21,7 @@ const analyticsSlice = createSlice({
     name: 'analytics',
     initialState: {
         dashboard: null,
+        aggregate: null,
         vehicleCosts: null,
         fuelEfficiency: null,
         status: 'idle',
@@ -28,6 +33,9 @@ const analyticsSlice = createSlice({
             .addCase(fetchDashboardKPIs.pending, (s) => { s.status = 'loading' })
             .addCase(fetchDashboardKPIs.fulfilled, (s, a) => { s.dashboard = a.payload; s.status = 'succeeded' })
             .addCase(fetchDashboardKPIs.rejected, (s, a) => { s.status = 'failed'; s.error = a.error.message })
+            .addCase(fetchDashboardAggregate.pending, (s) => { s.status = 'loading' })
+            .addCase(fetchDashboardAggregate.fulfilled, (s, a) => { s.aggregate = a.payload; s.status = 'succeeded' })
+            .addCase(fetchDashboardAggregate.rejected, (s, a) => { s.status = 'failed'; s.error = a.error.message })
             .addCase(fetchVehicleCosts.fulfilled, (s, a) => { s.vehicleCosts = a.payload })
             .addCase(fetchFuelEfficiency.fulfilled, (s, a) => { s.fuelEfficiency = a.payload })
     },

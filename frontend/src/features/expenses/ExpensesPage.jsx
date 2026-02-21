@@ -41,8 +41,10 @@ export default function ExpensesPage() {
         e.preventDefault()
         setSubmitting(true)
         try {
+            const { fuel_date, ...rest } = fuelForm
             await dispatch(createFuelLog({
-                ...fuelForm,
+                ...rest,
+                refuel_date: fuel_date || new Date().toISOString().split('T')[0],
                 trip_id: parseInt(fuelForm.trip_id),
                 vehicle_id: parseInt(fuelForm.vehicle_id),
                 liters: parseFloat(fuelForm.liters),
@@ -50,6 +52,7 @@ export default function ExpensesPage() {
             })).unwrap()
             toast.success('Fuel log added')
             setShowFuelForm(false)
+            setFuelForm({ trip_id: '', vehicle_id: '', liters: '', cost: '', fuel_date: '' })
             dispatch(fetchFuelLogs())
         } catch (err) { toast.error(typeof err === 'string' ? err : 'Failed') }
         finally { setSubmitting(false) }
